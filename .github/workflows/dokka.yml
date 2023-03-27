@@ -1,0 +1,22 @@
+name: Dokka
+on:
+  push:
+    branches: [mainline]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '11'
+      - name: Build documentation
+        run: ./gradlew :dokkaHtml --no-daemon --stacktrace
+      - name: Publish documentation
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/dokka/dokkaHtml

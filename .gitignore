@@ -21,3 +21,20 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+*.iml
+.idea
+
+out/
+
+build
+target
+.gradle
+
+local.properties
+*.gpg.enc
+
+.DS_Store
+
+# DO check in the Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar

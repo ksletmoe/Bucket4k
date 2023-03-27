@@ -1,0 +1,57 @@
+name: build
+
+on:
+  pull_request:
+    branches: ['**']
+  push:
+    paths-ignore:
+      - '*.md'
+    branches:
+      - mainline
+
+jobs:
+  build:
+    name: Build and Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '11'
+          cache: 'gradle'
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Build
+        run: ./gradlew build --no-daemon
+
+      - name: Run Unit Tests
+        run: ./gradlew test --no-daemon
+
+  publish:
+    name: Publish Snapshot
+    needs: [build]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/mainline'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '11'
+          cache: 'gradle'
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Publish to Sonatype
+        env:
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
+        run: ./gradlew publishToSonatype --no-daemon
