@@ -1,26 +1,26 @@
-$dokka.format:gfm-v1
-$dokka.linkExtension:md
-$dokka.location:com.sletmoe.bucket4k////PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/index.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket.Companion///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/-companion/index.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket.Companion/build/#kotlin.Function1[com.sletmoe.bucket4k.SuspendingBucketConfiguration,kotlin.Unit]/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/-companion/build.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/index.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/addTokens/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/add-tokens.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/availableTokens/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/available-tokens.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/configuration/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/configuration.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/consume/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/consume.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/forceAddTokens/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/force-add-tokens.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/replaceConfiguration/#io.github.bucket4j.BucketConfiguration#io.github.bucket4j.TokensInheritanceStrategy/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/replace-configuration.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/reset/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/reset.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/toString/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/to-string.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/tryConsume/#kotlin.Long#kotlin.time.Duration/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/try-consume.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/tryConsume/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/try-consume.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/index.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/SuspendingBucketConfiguration/#io.github.bucket4j.TimeMeter#io.github.bucket4j.MathType#kotlin.collections.MutableList[io.github.bucket4j.Bandwidth]/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/-suspending-bucket-configuration.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/addLimit/#io.github.bucket4j.Bandwidth/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/add-limit.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/limits/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/limits.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/mathType/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/math-type.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/timeMeter/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/time-meter.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketTest///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-test/index.md
-$dokka.location:com.sletmoe.bucket4k/SuspendingBucketTest/SuspendingBucketTest/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-test/-suspending-bucket-test.md
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.sletmoe.bucket4k////PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/index.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket.Companion///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/-companion/index.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket.Companion/build/#kotlin.Function1[com.sletmoe.bucket4k.SuspendingBucketConfiguration,kotlin.Unit]/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/-companion/build.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/index.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/addTokens/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/add-tokens.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/availableTokens/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/available-tokens.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/configuration/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/configuration.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/consume/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/consume.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/forceAddTokens/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/force-add-tokens.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/replaceConfiguration/#io.github.bucket4j.BucketConfiguration#io.github.bucket4j.TokensInheritanceStrategy/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/replace-configuration.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/reset/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/reset.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/toString/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/to-string.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/tryConsume/#kotlin.Long#kotlin.time.Duration/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/try-consume.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucket/tryConsume/#kotlin.Long/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket/try-consume.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/index.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/SuspendingBucketConfiguration/#io.github.bucket4j.TimeMeter#io.github.bucket4j.MathType#kotlin.collections.MutableList[io.github.bucket4j.Bandwidth]/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/-suspending-bucket-configuration.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/addLimit/#io.github.bucket4j.Bandwidth/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/add-limit.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/limits/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/limits.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/mathType/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/math-type.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketConfiguration/timeMeter/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-configuration/time-meter.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketTest///PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-test/index.html
+$dokka.location:com.sletmoe.bucket4k/SuspendingBucketTest/SuspendingBucketTest/#/PointingToDeclaration/-bucket4k/com.sletmoe.bucket4k/-suspending-bucket-test/-suspending-bucket-test.html
 com.sletmoe.bucket4k
 
