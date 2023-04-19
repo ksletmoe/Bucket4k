@@ -37,7 +37,7 @@ We can then use the token bucket. For example, to limit transactions per second 
 fun Route.widgetRouting() {
     route("/widget") {
         get {
-            if (tokenBucket.consume(1)) {
+            if (tokenBucket.tryConsume(1)) {
                 call.respond(listWidgets())
             } else {
                 call.respondText("Too many requests! Slow your roll.", status = HttpStatusCode.TooManyRequests)
