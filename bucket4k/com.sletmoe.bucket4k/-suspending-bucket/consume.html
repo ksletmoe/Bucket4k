@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>mathType</title>
+    <title>consume</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
@@ -36,11 +36,11 @@
     <div id="leftToggler"><span class="icon-toggler"></span></div>
     <div class="library-name">
             <a href="../../../index.html">
-                    <span>Bucket4k</span>
+                    <span>bucket4k</span>
             </a>
     </div>
     <div>
-1.0.0.16-SNAPSHOT    </div>
+1.0.0.17-SNAPSHOT    </div>
     <div class="pull-right d-flex">
         <div class="filter-section" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
@@ -54,12 +54,12 @@
         <div id="sideMenu"></div>
     </div>
     <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageIds="Bucket4k::com.sletmoe.bucket4k/SuspendingBucketConfiguration/mathType/#/PointingToDeclaration//769193423">
-  <div class="breadcrumbs"><a href="../../../index.html">Bucket4k</a><span class="delimiter">/</span><a href="../index.html">com.sletmoe.bucket4k</a><span class="delimiter">/</span><a href="index.html">SuspendingBucketConfiguration</a><span class="delimiter">/</span><span class="current">mathType</span></div>
+<div class="main-content" data-page-type="member" id="content" pageIds="bucket4k::com.sletmoe.bucket4k/SuspendingBucket/consume/#kotlin.Long/PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">bucket4k</a><span class="delimiter">/</span><a href="../index.html">com.sletmoe.bucket4k</a><span class="delimiter">/</span><a href="index.html">SuspendingBucket</a><span class="delimiter">/</span><span class="current">consume</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>math</span><wbr></wbr><span><span>Type</span></span></h1>
+    <h1 class="cover"><span><span>consume</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="math-type.html">mathType</a><span class="token operator">: </span><span data-unresolved-link="io.github.bucket4j/MathType///PointingToDeclaration/">MathType</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/ksletmoe/Bucket4k/tree/mainline/src/main/kotlin/com/sletmoe/bucket4k/SuspendingBucketConfiguration.kt#L19">source</a>)</span></span></div></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="consume.html"><span class="token function">consume</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tokensToConsume<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/ksletmoe/Bucket4k/tree/mainline/src/main/kotlin/com/sletmoe/bucket4k/SuspendingBucket.kt#L88">source</a>)</span></span></div><p class="paragraph">Consumes the specified number of <a href="consume.html">tokensToConsume</a>, suspending as long as necessary to accumulate the requisite number of tokens. This algorithm is a direct copy of Bucket4j BlockingBucket's <a href="https://github.com/bucket4j/bucket4j/blob/master/asciidoc/src/main/docs/asciidoc/basic/api-reference.adoc#consume">consume</a>, except it suspends the calling coroutine's execution while waiting for available tokens, rather than blocking the thread. See the Bucket4j <a href="https://github.com/bucket4j/bucket4j/blob/master/asciidoc/src/main/docs/asciidoc/basic/api-reference.adoc#consume">consume</a> documentation for more details.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>tokens</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Consume</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The number of tokens to try and consume from the bucket. Must be a positive value.</p></div></div></div></div></div></div></div>
 </div>
       <div class="footer">
         <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
