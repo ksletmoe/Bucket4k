@@ -7,8 +7,8 @@ import io.github.bucket4j.TokensInheritanceStrategy
 import kotlin.time.Duration
 
 /**
- * [SuspendingBucket] is an opaque wrapper around [Bucket4j's](https://github.com/bucket4j/bucket4j)
- * [io.github.bucket4j.local.LockFreeBucket], and implements an interface semantically equivalent to
+ * [SuspendingBucket] is an opaque wrapper around [Bucket4j's](https://github.com/bucket4j/bucket4j) LockFreeBucket, and
+ * implements an interface semantically equivalent to
  * [BlockingBucket](https://bucket4j.com/8.2.0/toc.html#blocking-bucket).
  * Whereas Bucket4j's blocking behavior is just that, [SuspendingBucket] instead delays, making it safe to use in a
  * coroutine context.
