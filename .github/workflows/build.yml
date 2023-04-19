@@ -25,11 +25,8 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
-      - name: Build
+      - name: Build and Run Unit Tests
         run: ./gradlew build --no-daemon
-
-      - name: Run Unit Tests
-        run: ./gradlew test --no-daemon
 
   publish:
     name: Publish Snapshot
