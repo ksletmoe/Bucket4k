@@ -107,7 +107,7 @@ nexusPublishing {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
+        create<MavenPublication>("mavenJava") {
             from(components["java"])
 
             pom {
@@ -140,11 +140,21 @@ publishing {
     }
 }
 
+val signingKey: String? by project
+val signingPassword: String? by project
+
 signing {
-    val signingKey = findProperty("signingKey") as String?
-    val signingPassword = findProperty("signingPassword") as String?
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    val publications: PublicationContainer = (extensions.getByName("publishing") as PublishingExtension).publications
-    @Suppress("UnstableApiUsage")
-    sign(publications)
+    useGpgCmd()
+
+    if (signingKey != null && signingPassword != null) {
+        @Suppress("UnstableApiUsage")
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
+
+    sign(publishing.publications["mavenJava"])
+//    val signingKey = findProperty("signingKey") as String?
+//    val signingPassword = findProperty("signingPassword") as String?
+//    useInMemoryPgpKeys(signingKey, signingPassword)
+//    @Suppress("UnstableApiUsage")
+//    sign(publishing.publications["mavenJava"])
 }

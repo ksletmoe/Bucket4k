@@ -2,7 +2,7 @@
 ![build](https://github.com/ksletmoe/Bucket4k/actions/workflows/build.yml/badge.svg)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://github.com/ksletmoe/Bucket4k/blob/mainline/LICENSE)
 [<img src="https://img.shields.io/maven-central/v/com.sletmoe.bucket4k/bucket4k.svg?label=latest%20release"/>](http://search.maven.org/#search%7Cga%7C1%bucket4k)
-[<img src="https://img.shields.io/nexus/s/https/oss.sonatype.org/com.sletmoe.bucket4k/bucket4k.svg?label=latest%20snapshot&style=plastic"/>](https://oss.sonatype.org/content/repositories/snapshots/com/sletmoe/bucket4k/bucket4k/)
+[<img src="https://img.shields.io/nexus/s/https/s01.oss.sonatype.org/com.sletmoe.bucket4k/bucket4k.svg?label=latest%20snapshot&style=plastic"/>](https://s01.oss.sonatype.org/content/repositories/snapshots/com/sletmoe/bucket4k/bucket4k/)
 
 
 A Kotlin wrapper around [Bucket4j](https://github.com/bucket4j/bucket4j) which suspends and plays nicely with coroutines.
