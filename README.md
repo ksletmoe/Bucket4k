@@ -60,4 +60,4 @@ val results = webPagesToGet.map { webPageUri ->
 }.map { it.await() }
 ```
 
-Read the [API documentation](https://ksletmoe.github.io/Bucket4k/-bucket4k/com.sletmoe.bucket4k/index.html) for more information.
+Read the [API documentation](https://ksletmoe.github.io/Bucket4k/bucket4k/com.sletmoe.bucket4k/index.html) for more information.
