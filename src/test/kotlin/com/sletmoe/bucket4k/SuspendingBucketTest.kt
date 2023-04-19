@@ -5,14 +5,19 @@ import io.github.bucket4j.Refill
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.timing.eventually
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.test.testCoroutineScheduler
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 import kotlin.system.measureTimeMillis
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.toJavaDuration
 
+@OptIn(ExperimentalStdlibApi::class, ExperimentalCoroutinesApi::class)
 class SuspendingBucketTest : FunSpec() {
     private lateinit var bucket: SuspendingBucket
 
@@ -56,19 +61,27 @@ class SuspendingBucketTest : FunSpec() {
                 }
             }
 
-            test("should delay for the required token filling time") {
-                var consumed = false
-                val elapsedMillis = measureTimeMillis {
-                    // ensure we complete in a reasonable amount of time
-                    eventually(3.5.seconds) {
-                        consumed = bucket.tryConsume(tokensToConsume = 8L, maxWaitTime = 4.seconds)
-                    }
+            test("should delay for the required token filling time").config(coroutineTestScope = true) {
+                var done = false
+
+                val deferredConsumed = async {
+                    val consumed = bucket.tryConsume(tokensToConsume = 8L, maxWaitTime = 4.seconds)
+                    done = true
+                    consumed
                 }
 
-                // should take just over 3 seconds (first 5 covered by starting capacity, 3 seconds to accumulate 3 more
-                // tokens
-                elapsedMillis shouldBeGreaterThanOrEqual 3.seconds.inWholeMilliseconds
-                consumed shouldBe true
+                // should need to wait 3 seconds to accumulate enough tokens, given 5 are covered by the starting
+                // capacity, and we need 3 seconds to accumulate the 3 remaining
+                done shouldBe false
+                testCoroutineScheduler.advanceTimeBy(2.5.seconds.inWholeMilliseconds)
+                done shouldBe false
+                testCoroutineScheduler.advanceTimeBy(0.5.seconds.inWholeMilliseconds)
+
+                eventually(1.seconds) {
+                    done shouldBe true
+                }
+
+                deferredConsumed.await() shouldBe true
             }
         }
 
@@ -85,14 +98,23 @@ class SuspendingBucketTest : FunSpec() {
                 }
             }
 
-            test("should delay for the required token filling time") {
-                val elapsedMillis = measureTimeMillis {
-                    eventually(4.5.seconds) {
-                        bucket.consume(tokensToConsume = 9L)
-                    }
+            test("should delay for the required token filling time").config(coroutineTestScope = true) {
+                var done = false
+
+                launch {
+                    bucket.consume(tokensToConsume = 9L)
+                    done = true
                 }
 
-                elapsedMillis shouldBeGreaterThanOrEqual 4.seconds.inWholeMilliseconds
+                // should take 4 seconds to accumulate the required number of tokens
+                done shouldBe false
+                testCoroutineScheduler.advanceTimeBy(3.seconds.inWholeMilliseconds)
+                done shouldBe false
+
+                testCoroutineScheduler.advanceTimeBy(1.seconds.inWholeMilliseconds)
+                eventually(1.seconds) {
+                    done shouldBe true
+                }
             }
         }
     }
