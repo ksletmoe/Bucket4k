@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     implementation(KotlinX.coroutines.core)
-    implementation("com.bucket4j:bucket4j-core:_")
+    api("com.bucket4j:bucket4j-core:_")
 
     testImplementation(kotlin("test"))
     testImplementation(Testing.kotest.runner.junit5)
