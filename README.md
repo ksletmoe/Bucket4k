@@ -7,6 +7,8 @@
 
 A Kotlin wrapper around [Bucket4j](https://github.com/bucket4j/bucket4j) which suspends and plays nicely with coroutines.
 
+See the [changelog](https://github.com/ksletmoe/Bucket4k/blob/mainline/changelog.md).
+
 ## Features
 * Not another token bucket implementation: Uses Bucket4k's tried and true token bucket implementation.
 * No locks: Wraps Bucket4j's LockFreeBucket.
