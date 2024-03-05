@@ -1,9 +1,7 @@
 package com.sletmoe.bucket4k
 
-import io.github.bucket4j.Bandwidth
-import io.github.bucket4j.Refill
+import io.kotest.assertions.nondeterministic.eventually
 import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.assertions.timing.eventually
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.test.testCoroutineScheduler
 import io.kotest.matchers.shouldBe
@@ -23,7 +21,7 @@ class SuspendingBucketTest : FunSpec() {
         beforeEach {
             // 5 tokens up front (with a max capacity of 5), add one token per 1 second interval
             bucket = SuspendingBucket.build {
-                addLimit(Bandwidth.classic(5, Refill.intervally(1, 1.seconds.toJavaDuration())))
+                addLimit { capacity(5).refillIntervally(1, 1.seconds.toJavaDuration()).initialTokens(5) }
             }
         }
 
