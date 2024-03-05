@@ -4,13 +4,13 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import java.net.URL
 
 plugins {
-    kotlin("jvm") version "1.8.10"
-    id("org.jetbrains.dokka") version "1.8.10"
-    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
+    kotlin("jvm")
+    id("org.jetbrains.dokka")
+    id("org.jlleitschuh.gradle.ktlint")
 
     id("signing")
     id("maven-publish")
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    id("io.github.gradle-nexus.publish-plugin")
 }
 
 group = "com.sletmoe.bucket4k"
@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     implementation(KotlinX.coroutines.core)
-    api("com.bucket4j:bucket4j-core:_")
+    api(libs.bucket4j.core)
 
     testImplementation(kotlin("test"))
     testImplementation(Testing.kotest.runner.junit5)
@@ -55,7 +55,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 tasks.withType<DokkaTask>().configureEach {
     moduleName.set(project.name)
     moduleVersion.set(project.version.toString())
-    outputDirectory.set(buildDir.resolve("dokka/$name"))
+    outputDirectory.set(layout.buildDirectory.dir("dokka/$name"))
     failOnWarning.set(false)
     suppressObviousFunctions.set(true)
     suppressInheritedMembers.set(false)
