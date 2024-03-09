@@ -1,7 +1,7 @@
 rootProject.name = "bucket4k"
 
 plugins {
-    id("de.fayard.refreshVersions") version "0.51.0"
+    id("de.fayard.refreshVersions") version "0.60.5"
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
