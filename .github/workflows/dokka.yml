@@ -11,8 +11,8 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-java@v3
         with:
-          distribution: 'corretto'
-          java-version: '11'
+          distribution: "corretto"
+          java-version: "17"
       - name: Build documentation
         run: ./gradlew :dokkaHtml --no-daemon --stacktrace
       - name: Publish documentation
