@@ -2,6 +2,7 @@ package com.sletmoe.bucket4k
 
 import io.github.bucket4j.BucketConfiguration
 import io.github.bucket4j.BucketExceptions
+import io.github.bucket4j.BucketListener
 import io.github.bucket4j.LimitChecker.checkMaxWaitTime
 import io.github.bucket4j.LimitChecker.checkTokensToConsume
 import io.github.bucket4j.MathType
@@ -16,37 +17,44 @@ internal class SuspendingBucketImpl(
     bucketConfiguration: BucketConfiguration,
     mathType: MathType,
     timeMeter: TimeMeter,
-) : LockFreeBucket(bucketConfiguration, mathType, timeMeter) {
-    suspend fun tryConsumeSuspending(tokensToConsume: Long, maxWaitTime: Duration): Boolean = coroutineScope {
-        checkTokensToConsume(tokensToConsume)
-        val maxWaitTimeNanos = maxWaitTime.inWholeNanoseconds
-        checkMaxWaitTime(maxWaitTimeNanos)
+    bucketListener: BucketListener = BucketListener.NOPE,
+) : LockFreeBucket(bucketConfiguration, mathType, timeMeter, bucketListener) {
+    suspend fun tryConsumeSuspending(
+        tokensToConsume: Long,
+        maxWaitTime: Duration,
+    ): Boolean =
+        coroutineScope {
+            checkTokensToConsume(tokensToConsume)
+            val maxWaitTimeNanos = maxWaitTime.inWholeNanoseconds
+            checkMaxWaitTime(maxWaitTimeNanos)
 
-        val nanosToDelay: Long = reserveAndCalculateTimeToSleepImpl(
-            tokensToConsume,
-            maxWaitTimeNanos,
-        )
-        if (nanosToDelay == INFINITY_DURATION) {
-            listener.onRejected(tokensToConsume)
-            return@coroutineScope false
+            val nanosToDelay: Long =
+                reserveAndCalculateTimeToSleepImpl(
+                    tokensToConsume,
+                    maxWaitTimeNanos,
+                )
+            if (nanosToDelay == INFINITY_DURATION) {
+                listener.onRejected(tokensToConsume)
+                return@coroutineScope false
+            }
+
+            listener.onConsumed(tokensToConsume)
+            if (nanosToDelay > 0L) {
+                delay(nanosToDelay.nanoseconds)
+                listener.onParked(nanosToDelay)
+            }
+
+            true
         }
-
-        listener.onConsumed(tokensToConsume)
-        if (nanosToDelay > 0L) {
-            delay(nanosToDelay.nanoseconds)
-            listener.onParked(nanosToDelay)
-        }
-
-        true
-    }
 
     suspend fun consumeSuspending(tokensToConsume: Long) {
         checkTokensToConsume(tokensToConsume)
 
-        val nanosToDelay: Long = reserveAndCalculateTimeToSleepImpl(
-            tokensToConsume,
-            INFINITY_DURATION,
-        )
+        val nanosToDelay: Long =
+            reserveAndCalculateTimeToSleepImpl(
+                tokensToConsume,
+                INFINITY_DURATION,
+            )
         if (nanosToDelay == INFINITY_DURATION) {
             throw BucketExceptions.reservationOverflow()
         }

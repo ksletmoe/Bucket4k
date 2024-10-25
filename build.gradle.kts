@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     implementation(KotlinX.coroutines.core)
-    api(libs.bucket4j.core)
+    api("com.bucket4j:bucket4j_jdk17-core:_")
 
     testImplementation(kotlin("test"))
     testImplementation(Testing.kotest.runner.junit5)
@@ -38,17 +38,14 @@ java {
     withSourcesJar()
 
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 kotlin {
-    jvmToolchain(11)
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "11"
+    compilerOptions {
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
@@ -68,9 +65,9 @@ tasks.withType<DokkaTask>().configureEach {
             skipEmptyPackages.set(true)
             skipDeprecated.set(false)
             suppressGeneratedFiles.set(true)
-            jdkVersion.set(11)
-            languageVersion.set("1.8")
-            apiVersion.set("1.8")
+            jdkVersion.set(17)
+            languageVersion.set("17")
+            apiVersion.set("17")
             noStdlibLink.set(false)
             noJdkLink.set(false)
             platform.set(Platform.DEFAULT)
@@ -152,9 +149,4 @@ signing {
     }
 
     sign(publishing.publications["mavenJava"])
-//    val signingKey = findProperty("signingKey") as String?
-//    val signingPassword = findProperty("signingPassword") as String?
-//    useInMemoryPgpKeys(signingKey, signingPassword)
-//    @Suppress("UnstableApiUsage")
-//    sign(publishing.publications["mavenJava"])
 }

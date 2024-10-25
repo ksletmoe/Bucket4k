@@ -69,10 +69,14 @@ class SuspendingBucket private constructor(private val impl: SuspendingBucketImp
      * requested [tokensToConsume] can be consumed.
      * @return true if the tokens were consumed, false otherwise.
      */
-    suspend fun tryConsume(tokensToConsume: Long, maxWaitTime: Duration): Boolean = impl.tryConsumeSuspending(
-        tokensToConsume,
-        maxWaitTime,
-    )
+    suspend fun tryConsume(
+        tokensToConsume: Long,
+        maxWaitTime: Duration,
+    ): Boolean =
+        impl.tryConsumeSuspending(
+            tokensToConsume,
+            maxWaitTime,
+        )
 
     /**
      * Consumes the specified number of [tokensToConsume], suspending as long as necessary to accumulate the requisite

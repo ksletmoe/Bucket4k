@@ -20,9 +20,10 @@ class SuspendingBucketTest : FunSpec() {
     init {
         beforeEach {
             // 5 tokens up front (with a max capacity of 5), add one token per 1 second interval
-            bucket = SuspendingBucket.build {
-                addLimit { capacity(5).refillIntervally(1, 1.seconds.toJavaDuration()).initialTokens(5) }
-            }
+            bucket =
+                SuspendingBucket.build {
+                    addLimit { capacity(5).refillIntervally(1, 1.seconds.toJavaDuration()).initialTokens(5) }
+                }
         }
 
         context("tryConsume with maxWaitTime") {
@@ -60,11 +61,12 @@ class SuspendingBucketTest : FunSpec() {
             test("should delay for the required token filling time").config(coroutineTestScope = true) {
                 var done = false
 
-                val deferredConsumed = async {
-                    val consumed = bucket.tryConsume(tokensToConsume = 8L, maxWaitTime = 4.seconds)
-                    done = true
-                    consumed
-                }
+                val deferredConsumed =
+                    async {
+                        val consumed = bucket.tryConsume(tokensToConsume = 8L, maxWaitTime = 4.seconds)
+                        done = true
+                        consumed
+                    }
 
                 // should need to wait 3 seconds to accumulate enough tokens, given 5 are covered by the starting
                 // capacity, and we need 3 seconds to accumulate the 3 remaining
