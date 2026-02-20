@@ -13,7 +13,9 @@ import kotlin.time.Duration
  * Whereas Bucket4j's blocking behavior is just that, [SuspendingBucket] instead delays, making it safe to use in a
  * coroutine context.
  */
-class SuspendingBucket private constructor(private val impl: SuspendingBucketImpl) {
+class SuspendingBucket private constructor(
+    private val impl: SuspendingBucketImpl,
+) {
     /**
      * Delegates directly to the underlying LockFreeBucket's toString implementation.
      */
