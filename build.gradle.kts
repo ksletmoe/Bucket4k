@@ -27,6 +27,7 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.assertions.core)
+    testImplementation(KotlinX.coroutines.test)
 }
 
 tasks.test {
