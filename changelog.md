@@ -1,6 +1,6 @@
 # Changelog
 
-#### 2.1.0
+#### 2.0.1
 * Updated dependency and plugin versions:
   * Kotlin `2.2.21`
   * kotlinx.coroutines `1.10.2`
