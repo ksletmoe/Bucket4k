@@ -25,6 +25,7 @@ dependencies {
     api("com.bucket4j:bucket4j_jdk17-core:_")
 
     testImplementation(kotlin("test"))
+    testImplementation(KotlinX.coroutines.test)
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.assertions.core)
 }
