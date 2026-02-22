@@ -25,8 +25,8 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Build and Run Unit Tests
-        run: ./gradlew build --no-daemon
+      - name: Build, Run Unit Tests, and Build Dokka HTML
+        run: ./gradlew build :dokkaHtml --no-daemon
 
   publish:
     name: Publish Snapshot
