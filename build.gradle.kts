@@ -92,6 +92,12 @@ dokka {
     }
 }
 
+tasks.register("dokkaHtml") {
+    group = "documentation"
+    description = "Backward-compatible alias for Dokka HTML generation."
+    dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+}
+
 nexusPublishing {
     repositories {
         sonatype {
