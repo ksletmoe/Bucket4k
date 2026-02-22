@@ -1,6 +1,4 @@
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.Platform
-import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import java.net.URL
 
 plugins {
@@ -45,51 +43,51 @@ java {
 
 kotlin {
     compilerOptions {
-        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3)
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
-tasks.withType<DokkaTask>().configureEach {
+dokka {
     moduleName.set(project.name)
     moduleVersion.set(project.version.toString())
-    outputDirectory.set(layout.buildDirectory.dir("dokka/$name"))
-    failOnWarning.set(false)
-    suppressObviousFunctions.set(true)
-    suppressInheritedMembers.set(false)
-    offlineMode.set(false)
 
-    dokkaSourceSets {
-        configureEach {
-            documentedVisibilities.set(setOf(Visibility.PUBLIC))
-            reportUndocumented.set(false)
-            skipEmptyPackages.set(true)
+    dokkaPublications.html {
+        outputDirectory.set(layout.buildDirectory.dir("dokka/html"))
+        failOnWarning.set(false)
+        suppressObviousFunctions.set(true)
+        suppressInheritedMembers.set(false)
+        offlineMode.set(false)
+    }
+
+    dokkaSourceSets.main {
+        documentedVisibilities.set(setOf(VisibilityModifier.Public))
+        reportUndocumented.set(false)
+        skipEmptyPackages.set(true)
+        skipDeprecated.set(false)
+        suppressGeneratedFiles.set(true)
+        jdkVersion.set(17)
+        languageVersion.set("17")
+        apiVersion.set("17")
+        enableKotlinStdLibDocumentationLink.set(true)
+        enableJdkDocumentationLink.set(true)
+        sourceRoots.from(file("src"))
+
+        sourceLink {
+            localDirectory.set(projectDir.resolve("src"))
+            remoteUrl.set(URL("https://github.com/ksletmoe/Bucket4k/tree/mainline/src").toURI())
+            remoteLineSuffix.set("#L")
+        }
+
+        perPackageOption {
+            suppress.set(false)
             skipDeprecated.set(false)
-            suppressGeneratedFiles.set(true)
-            jdkVersion.set(17)
-            languageVersion.set("17")
-            apiVersion.set("17")
-            noStdlibLink.set(false)
-            noJdkLink.set(false)
-            platform.set(Platform.DEFAULT)
-            sourceRoots.from(file("src"))
-
-            sourceLink {
-                localDirectory.set(projectDir.resolve("src"))
-                remoteUrl.set(URL("https://github.com/ksletmoe/Bucket4k/tree/mainline/src"))
-                remoteLineSuffix.set("#L")
-            }
-
-            perPackageOption {
-                suppress.set(false)
-                skipDeprecated.set(false)
-                reportUndocumented.set(false)
-                documentedVisibilities.set(
-                    setOf(
-                        Visibility.PUBLIC,
-                    ),
-                )
-            }
+            reportUndocumented.set(false)
+            documentedVisibilities.set(
+                setOf(
+                    VisibilityModifier.Public,
+                ),
+            )
         }
     }
 }
