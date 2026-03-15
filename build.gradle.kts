@@ -120,7 +120,8 @@ publishing {
                 credentials(HttpHeaderCredentials::class) {
                     name = "Authorization"
                     val credentials = "$sonatypeUsername:$sonatypePassword"
-                    val encoded = Base64.getEncoder()
+                    val encoded = Base64
+                        .getEncoder()
                         .encodeToString(credentials.toByteArray())
                     value = "Bearer $encoded"
                 }
