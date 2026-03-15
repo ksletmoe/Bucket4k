@@ -1,6 +1,5 @@
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import java.net.URL
-import java.util.Base64
 
 plugins {
     kotlin("jvm")
@@ -117,14 +116,9 @@ publishing {
             maven {
                 name = "centralPortalSnapshots"
                 url = uri("https://central.sonatype.com/repository/maven-snapshots/")
-                credentials(HttpHeaderCredentials::class) {
-                    name = "Authorization"
-                    val token = "$sonatypeUsername:$sonatypePassword"
-                    value =
-                        "Bearer ${Base64.getEncoder().encodeToString(token.toByteArray())}"
-                }
-                authentication {
-                    create<HttpHeaderAuthentication>("header")
+                credentials {
+                    username = sonatypeUsername
+                    password = sonatypePassword
                 }
             }
         }
