@@ -45,10 +45,10 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Publish to Sonatype
+      - name: Publish Snapshot to Central Portal
         env:
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
-        run: ./gradlew publishToSonatype --no-daemon
+        run: ./gradlew publishMavenJavaPublicationToCentralPortalSnapshotsRepository --no-daemon

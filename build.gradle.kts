@@ -1,5 +1,6 @@
 import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import java.net.URL
+import java.util.Base64
 
 plugins {
     kotlin("jvm")
@@ -107,7 +108,26 @@ nexusPublishing {
     }
 }
 
+val sonatypeUsername: String? by project
+val sonatypePassword: String? by project
+
 publishing {
+    repositories {
+        if (Ci.isRelease.not() && sonatypeUsername != null && sonatypePassword != null) {
+            maven {
+                name = "centralPortalSnapshots"
+                url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+                credentials(HttpHeaderCredentials::class) {
+                    name = "Authorization"
+                    value = "Bearer ${Base64.getEncoder().encodeToString("$sonatypeUsername:$sonatypePassword".toByteArray())}"
+                }
+                authentication {
+                    create<HttpHeaderAuthentication>("header")
+                }
+            }
+        }
+    }
+
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
