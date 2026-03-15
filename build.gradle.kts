@@ -119,7 +119,10 @@ publishing {
                 url = uri("https://central.sonatype.com/repository/maven-snapshots/")
                 credentials(HttpHeaderCredentials::class) {
                     name = "Authorization"
-                    value = "Bearer ${Base64.getEncoder().encodeToString("$sonatypeUsername:$sonatypePassword".toByteArray())}"
+                    val credentials = "$sonatypeUsername:$sonatypePassword"
+                    val encoded = Base64.getEncoder()
+                        .encodeToString(credentials.toByteArray())
+                    value = "Bearer $encoded"
                 }
                 authentication {
                     create<HttpHeaderAuthentication>("header")
